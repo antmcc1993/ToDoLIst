@@ -25,6 +25,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="wmv-SZ-occ" kind="show" identifier="showDetails" id="LsH-wA-QYB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -48,7 +51,7 @@
         <!--New ToDo-->
         <scene sceneID="JG8-Es-g0B">
             <objects>
-                <tableViewController id="wmv-SZ-occ" sceneMemberID="viewController">
+                <tableViewController id="wmv-SZ-occ" customClass="ToDoViewController" customModule="ToDoLIst" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Yk0-vH-gMV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,12 +74,19 @@
                                                     </constraints>
                                                     <state key="normal" title="Button" image="Unchecked"/>
                                                     <state key="selected" image="Checked"/>
+                                                    <connections>
+                                                        <action selector="isCompleteButtonTapped:" destination="wmv-SZ-occ" eventType="touchUpInside" id="4Mh-GW-9DA"/>
+                                                    </connections>
                                                 </button>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Remind me to" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LX5-jC-3J2">
                                                     <rect key="frame" x="64" y="7" width="330" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="returnedPressed:" destination="wmv-SZ-occ" eventType="editingDidEnd" id="mqm-b4-Wst"/>
+                                                        <action selector="textEditingChanged:" destination="wmv-SZ-occ" eventType="editingDidEnd" id="iqf-IU-VIY"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -119,6 +129,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="575458978.93157101">
                                                         <!--2019-03-28 09:42:58 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="datePickerChanged:" destination="wmv-SZ-occ" eventType="primaryActionTriggered" id="Ilr-j9-yEj"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -146,7 +159,6 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SIi-3u-3FM">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="199.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -179,11 +191,19 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dueDateLabel" destination="bEM-qP-7nM" id="kg1-GD-E0R"/>
+                        <outlet property="dueDatePickerView" destination="lgg-it-P7R" id="zi5-28-1Zn"/>
+                        <outlet property="isCompleteButton" destination="9tp-Z0-NmW" id="TE7-xA-bBW"/>
+                        <outlet property="notesTextView" destination="SIi-3u-3FM" id="BF9-ZK-70R"/>
+                        <outlet property="saveButton" destination="HdF-CG-jRK" id="psQ-Lt-aoO"/>
+                        <outlet property="titleTextField" destination="LX5-jC-3J2" id="gmg-Y0-sa7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="85u-S3-sHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GKZ-tH-3rL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2586.9565217391305" y="-533.03571428571422"/>
+            <point key="canvasLocation" x="2354" y="-530"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="10m-ht-pM0">
@@ -199,7 +219,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NyS-26-xrs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1670" y="-533"/>
+            <point key="canvasLocation" x="1652" y="-192"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dXv-lW-7NR">
@@ -222,4 +242,7 @@
         <image name="Checked" width="44" height="44"/>
         <image name="Unchecked" width="44" height="44"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="LsH-wA-QYB"/>
+    </inferredMetricsTieBreakers>
 </document>
